@@ -193,6 +193,7 @@ public class ReflectionUtils {
 	/**
 	 * Get the Package from net.minecraft Example: net.minecraft.v1_6_R3
 	 */
+	@Deprecated
 	public static String getNMSPackageName() {
 		return "net.minecraft.server." + Bukkit.getServer().getClass().getPackage().getName().replace(".", ",").split(",")[3];
 	}
@@ -200,6 +201,7 @@ public class ReflectionUtils {
 	/**
 	 * Get the Package from org.bukkit.craftbukkit Example: org.bukkit.craftbukkit.v1_6_R3
 	 */
+	@Deprecated
 	public static String getOBCPackageName() {
 		return "org.bukkit.craftbukkit." + Bukkit.getServer().getClass().getPackage().getName().replace(".", ",").split(",")[3];
 	}
