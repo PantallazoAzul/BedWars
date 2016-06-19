@@ -45,6 +45,8 @@ import com.comze_instancelabs.bedwars.sheep.Register1710;
 import com.comze_instancelabs.bedwars.sheep.Register172;
 import com.comze_instancelabs.bedwars.sheep.Register175;
 import com.comze_instancelabs.bedwars.sheep.Register178;
+import com.comze_instancelabs.bedwars.sheep.Register18;
+import com.comze_instancelabs.bedwars.sheep.Register185;
 import com.comze_instancelabs.bedwars.sheep.Register19;
 import com.comze_instancelabs.bedwars.sheep.Register194;
 import com.comze_instancelabs.bedwars.sheep.Sheeep;
@@ -163,22 +165,42 @@ public class Main extends JavaPlugin implements Listener {
 		pli.getMessagesConfig().getConfig().options().copyDefaults(true);
 		pli.getMessagesConfig().saveConfig();
 
-		if (MinigamesAPI.getAPI().version.equalsIgnoreCase("v1_7_R4")) {
-			reg = new Register1710();
-		} else if (MinigamesAPI.getAPI().version.equalsIgnoreCase("v1_7_R3")) {
-			reg = new Register178();
-		} else if (MinigamesAPI.getAPI().version.equalsIgnoreCase("v1_7_R2")) {
-			reg = new Register175();
-		} else if (MinigamesAPI.getAPI().version.equalsIgnoreCase("v1_7_R1")) {
+		switch (MinigamesAPI.SERVER_VERSION)
+		{
+		case Unknown:
+		default:
+			break;
+		case V1_10:
+		case V1_10_R1:
+			reg = new Register110();
+			break;
+		case V1_7:
+		case V1_7_R1:
 			reg = new Register172();
-		} else if (MinigamesAPI.getAPI().version.equalsIgnoreCase("v1_8_R1")) {
-			reg = new Register110();
-		} else if (MinigamesAPI.getAPI().version.equalsIgnoreCase("v1_9_R1")) {
+			break;
+		case V1_7_R2:
+			reg = new Register175();
+			break;
+		case V1_7_R3:
+			reg = new Register178();
+			break;
+		case V1_7_R4:
+			reg = new Register1710();
+			break;
+		case V1_8:
+		case V1_8_R1:
+			reg = new Register18();
+			break;
+		case V1_8_R2:
+			reg = new Register185();
+			break;
+		case V1_9:
+		case V1_9_R1:
 			reg = new Register19();
-		} else if (MinigamesAPI.getAPI().version.equalsIgnoreCase("v1_9_R2")) {
+			break;
+		case V1_9_R2:
 			reg = new Register194();
-		} else if (MinigamesAPI.getAPI().version.equalsIgnoreCase("v1_10_R1")) {
-			reg = new Register110();
+			break;
 		}
 		reg.registerEntities();
 	}
