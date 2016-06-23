@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.MCE-Plugins</groupId>
-	<artifactId>BedWars-1.7.9</artifactId>
+	<artifactId>MGBedWars-1.7.9</artifactId>
 	<version>1.14.9-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>BedWars 1.7.9</name>
@@ -10,7 +10,7 @@
 
 	<parent>
 		<groupId>com.github.MCE-Plugins</groupId>
-		<artifactId>BedWars-parent</artifactId>
+		<artifactId>MGBedWars-parent</artifactId>
 		<version>1.14.9-SNAPSHOT</version>
 	</parent>
 
@@ -31,7 +31,7 @@
   		</dependency>
   		<dependency>
   			<groupId>com.github.MCE-Plugins</groupId>
-  			<artifactId>BedWars-API</artifactId>
+  			<artifactId>MGBedWars-API</artifactId>
   			<version>1.14.9-SNAPSHOT</version>
   		</dependency>
 	</dependencies>
