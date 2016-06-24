@@ -14,6 +14,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.io.BukkitObjectOutputStream;
 
 import com.comze_instancelabs.minigamesapi.Arena;
+import com.comze_instancelabs.minigamesapi.ArenaConfigStrings;
 import com.comze_instancelabs.minigamesapi.ArenaSetup;
 import com.comze_instancelabs.minigamesapi.ArenaType;
 import com.comze_instancelabs.minigamesapi.MinigamesAPI;
@@ -50,7 +51,7 @@ public class IArenaSetup extends ArenaSetup {
 
 	public void saveArenaToFile(JavaPlugin plugin, String arena) {
 		File f = new File(plugin.getDataFolder() + "/" + arena);
-		Cuboid c = new Cuboid(Util.getComponentForArena(plugin, arena, "bounds.low"), Util.getComponentForArena(plugin, arena, "bounds.high"));
+		Cuboid c = new Cuboid(Util.getComponentForArena(plugin, arena, ArenaConfigStrings.BOUNDS_LOW), Util.getComponentForArena(plugin, arena, ArenaConfigStrings.BOUNDS_HIGH));
 		Location start = c.getLowLoc();
 		Location end = c.getHighLoc();
 
