@@ -53,6 +53,7 @@ import com.comze_instancelabs.bedwars.sheep.Sheeep;
 import com.comze_instancelabs.bedwars.villager.Merchant;
 import com.comze_instancelabs.bedwars.villager.MerchantOffer;
 import com.comze_instancelabs.minigamesapi.Arena;
+import com.comze_instancelabs.minigamesapi.ArenaConfigStrings;
 import com.comze_instancelabs.minigamesapi.ArenaSetup;
 import com.comze_instancelabs.minigamesapi.ArenaState;
 import com.comze_instancelabs.minigamesapi.ArenaType;
@@ -224,7 +225,7 @@ public class Main extends JavaPlugin implements Listener {
 		if (!config.isSet("arenas")) {
 			return ret;
 		}
-		for (String arena : config.getConfigurationSection("arenas.").getKeys(false)) {
+		for (String arena : config.getConfigurationSection(ArenaConfigStrings.ARENAS_PREFIX).getKeys(false)) {
 			if (Validator.isArenaValid(plugin, arena, cf.getConfig())) {
 				ret.add(initArena(arena));
 			}
