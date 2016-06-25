@@ -13,6 +13,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitTask;
 
 import com.comze_instancelabs.minigamesapi.Arena;
+import com.comze_instancelabs.minigamesapi.ArenaConfigStrings;
 import com.comze_instancelabs.minigamesapi.ArenaType;
 import com.comze_instancelabs.minigamesapi.MinigamesAPI;
 import com.comze_instancelabs.minigamesapi.PluginInstance;
@@ -158,18 +159,18 @@ public class IArena extends Arena {
 
 		// load clay, iron, gold locations
 		PluginInstance pli = MinigamesAPI.getAPI().getPluginInstance(m);
-		if (pli.getArenasConfig().getConfig().isSet("arenas." + this.getName() + ".clay")) {
-			for (String key : pli.getArenasConfig().getConfig().getConfigurationSection("arenas." + this.getName() + ".clay").getKeys(false)) {
+		if (pli.getArenasConfig().getConfig().isSet(ArenaConfigStrings.ARENAS_PREFIX + this.getName() + ".clay")) {
+			for (String key : pli.getArenasConfig().getConfig().getConfigurationSection(ArenaConfigStrings.ARENAS_PREFIX + this.getName() + ".clay").getKeys(false)) {
 				clay_locs.add(Util.getComponentForArena(m, this.getName(), "clay." + key));
 			}
 		}
-		if (pli.getArenasConfig().getConfig().isSet("arenas." + this.getName() + ".iron")) {
-			for (String key : pli.getArenasConfig().getConfig().getConfigurationSection("arenas." + this.getName() + ".iron").getKeys(false)) {
+		if (pli.getArenasConfig().getConfig().isSet(ArenaConfigStrings.ARENAS_PREFIX + this.getName() + ".iron")) {
+			for (String key : pli.getArenasConfig().getConfig().getConfigurationSection(ArenaConfigStrings.ARENAS_PREFIX + this.getName() + ".iron").getKeys(false)) {
 				iron_locs.add(Util.getComponentForArena(m, this.getName(), "iron." + key));
 			}
 		}
-		if (pli.getArenasConfig().getConfig().isSet("arenas." + this.getName() + ".gold")) {
-			for (String key : pli.getArenasConfig().getConfig().getConfigurationSection("arenas." + this.getName() + ".gold").getKeys(false)) {
+		if (pli.getArenasConfig().getConfig().isSet(ArenaConfigStrings.ARENAS_PREFIX + this.getName() + ".gold")) {
+			for (String key : pli.getArenasConfig().getConfig().getConfigurationSection(ArenaConfigStrings.ARENAS_PREFIX + this.getName() + ".gold").getKeys(false)) {
 				gold_locs.add(Util.getComponentForArena(m, this.getName(), "gold." + key));
 			}
 		}
