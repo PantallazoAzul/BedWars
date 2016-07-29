@@ -1,3 +1,17 @@
+/*
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
 package com.comze_instancelabs.bedwars;
 
 import java.lang.reflect.Method;
@@ -51,7 +65,15 @@ import com.comze_instancelabs.bedwars.sheep.Register19;
 import com.comze_instancelabs.bedwars.sheep.Register194;
 import com.comze_instancelabs.bedwars.sheep.Sheeep;
 import com.comze_instancelabs.bedwars.villager.Merchant;
-import com.comze_instancelabs.bedwars.villager.MerchantOffer;
+import com.comze_instancelabs.bedwars.villager.Merchant110;
+import com.comze_instancelabs.bedwars.villager.Merchant1710;
+import com.comze_instancelabs.bedwars.villager.Merchant172;
+import com.comze_instancelabs.bedwars.villager.Merchant175;
+import com.comze_instancelabs.bedwars.villager.Merchant178;
+import com.comze_instancelabs.bedwars.villager.Merchant18;
+import com.comze_instancelabs.bedwars.villager.Merchant185;
+import com.comze_instancelabs.bedwars.villager.Merchant19;
+import com.comze_instancelabs.bedwars.villager.Merchant194;
 import com.comze_instancelabs.minigamesapi.Arena;
 import com.comze_instancelabs.minigamesapi.ArenaConfigStrings;
 import com.comze_instancelabs.minigamesapi.ArenaSetup;
@@ -110,12 +132,7 @@ public class Main extends JavaPlugin implements Listener {
 		IArenaListener listener = new IArenaListener(this, pinstance, "bedwars");
 		pinstance.setArenaListener(listener);
 		MinigamesAPI.getAPI().registerArenaListenerLater(this, listener);
-		try {
-			pinstance.getClass().getMethod("setAchievementGuiEnabled", boolean.class);
-			pinstance.setAchievementGuiEnabled(true);
-		} catch (NoSuchMethodException e) {
-			System.out.println("Update your MinigamesLib to the latest version to use the Achievement Gui.");
-		}
+		pinstance.setAchievementGuiEnabled(true);
 		pli = pinstance;
 
 		gui = new GUIConfig(this);
@@ -139,15 +156,15 @@ public class Main extends JavaPlugin implements Listener {
 		}
 
 		// load villager trades
-		BlocksMerchant = new Merchant("Blocks");
-		ArmorMerchant = new Merchant("Armor");
-		PickaxesMerchant = new Merchant("Pickaxes");
-		SwordsMerchant = new Merchant("Swords");
-		BowsMerchant = new Merchant("Bows");
-		ConsumablesMerchant = new Merchant("Consumables");
-		ChestsMerchant = new Merchant("Chests");
-		PotionsMerchant = new Merchant("Potions");
-		SpecialsMerchant = new Merchant("Specials");
+		BlocksMerchant = createMerchant("Blocks");
+		ArmorMerchant = createMerchant("Armor");
+		PickaxesMerchant = createMerchant("Pickaxes");
+		SwordsMerchant = createMerchant("Swords");
+		BowsMerchant = createMerchant("Bows");
+		ConsumablesMerchant = createMerchant("Consumables");
+		ChestsMerchant = createMerchant("Chests");
+		PotionsMerchant = createMerchant("Potions");
+		SpecialsMerchant = createMerchant("Specials");
 
 		FileConfiguration config = gui.getConfig();
 
@@ -206,14 +223,47 @@ public class Main extends JavaPlugin implements Listener {
 		reg.registerEntities();
 	}
 
+	private Merchant createMerchant(String string)
+	{
+		switch (MinigamesAPI.SERVER_VERSION)
+		{
+		case Unknown:
+		default:
+			break;
+		case V1_10:
+		case V1_10_R1:
+			return new Merchant110(string);
+		case V1_7:
+		case V1_7_R1:
+			return new Merchant172(string);
+		case V1_7_R2:
+			return new Merchant175(string);
+		case V1_7_R3:
+			return new Merchant178(string);
+		case V1_7_R4:
+			return new Merchant1710(string);
+		case V1_8:
+		case V1_8_R1:
+			return new Merchant18(string);
+		case V1_8_R2:
+			return new Merchant185(string);
+		case V1_9:
+		case V1_9_R1:
+			return new Merchant19(string);
+		case V1_9_R2:
+			return new Merchant194(string);
+		}
+		return null;
+	}
+
 	public void loadTrades(FileConfiguration config, String path, Merchant m) {
 		if (config.isSet(path)) {
 			for (String aclass : config.getConfigurationSection(path).getKeys(false)) {
 				ArrayList<ItemStack> items = Util.parseItems(config.getString(path + aclass + ".items"));
 				if (items.size() > 2) {
-					m.addOffer(new MerchantOffer(items.get(1), items.get(2), items.get(0)));
+					m.addOffer(items.get(1), items.get(2), items.get(0));
 				} else {
-					m.addOffer(new MerchantOffer(items.get(1), items.get(0)));
+					m.addOffer(items.get(1), items.get(0));
 				}
 			}
 		}
@@ -323,7 +373,7 @@ public class Main extends JavaPlugin implements Listener {
 			if (event.getRightClicked().getType() == EntityType.VILLAGER) {
 				Bukkit.getScheduler().runTaskLater(this, new Runnable() {
 					public void run() {
-						maingui.openGUI(p.getName());
+						maingui.openGUI((Villager) event.getRightClicked(), p.getName());
 					}
 				}, 1L);
 				event.setCancelled(true);
