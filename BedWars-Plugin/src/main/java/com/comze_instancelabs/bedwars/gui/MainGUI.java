@@ -1,3 +1,17 @@
+/*
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
 package com.comze_instancelabs.bedwars.gui;
 
 import java.util.HashMap;
@@ -7,11 +21,10 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Villager;
 import org.bukkit.inventory.ItemStack;
 
 import com.comze_instancelabs.bedwars.Main;
-import com.comze_instancelabs.bedwars.villager.Merchant;
-import com.comze_instancelabs.bedwars.villager.MerchantOffer;
 import com.comze_instancelabs.minigamesapi.PluginInstance;
 import com.comze_instancelabs.minigamesapi.util.IconMenu;
 import com.comze_instancelabs.minigamesapi.util.Util;
@@ -29,7 +42,7 @@ public class MainGUI {
 		this.loadCategoryItemsLater();
 	}
 
-	public void openGUI(final String p) {
+	public void openGUI(Villager villager, final String p) {
 		IconMenu iconm;
 		if (lasticonm.containsKey(p)) {
 			iconm = lasticonm.get(p);
@@ -42,7 +55,7 @@ public class MainGUI {
 							if (pli.getArenas().contains(pli.global_players.get(p))) {
 								String d = event.getName();
 								Player p = event.getPlayer();
-								openCategory(p, d);
+								openCategory(villager, p, d);
 							}
 						}
 					}
@@ -83,62 +96,62 @@ public class MainGUI {
 		}, 20L);
 	}
 
-	public void openCategory(final Player p, final String category) {
+	public void openCategory(Villager villager, final Player p, final String category) {
 		Bukkit.getScheduler().runTaskLater(plugin, new Runnable() {
 			public void run() {
 				if (category.equalsIgnoreCase("blocks")) {
 					if (plugin.BlocksMerchant.hasCustomer()) {
-						plugin.BlocksMerchant.clone().openTrading(p);
+						plugin.BlocksMerchant.clone().openTrading(villager, p);
 					} else {
-						plugin.BlocksMerchant.openTrading(p);
+						plugin.BlocksMerchant.openTrading(villager, p);
 					}
 				} else if (category.equalsIgnoreCase("armor")) {
 					if (plugin.ArmorMerchant.hasCustomer()) {
-						plugin.ArmorMerchant.clone().openTrading(p);
+						plugin.ArmorMerchant.clone().openTrading(villager, p);
 					} else {
-						plugin.ArmorMerchant.openTrading(p);
+						plugin.ArmorMerchant.openTrading(villager, p);
 					}
 				} else if (category.equalsIgnoreCase("pickaxes")) {
 					if (plugin.PickaxesMerchant.hasCustomer()) {
-						plugin.PickaxesMerchant.clone().openTrading(p);
+						plugin.PickaxesMerchant.clone().openTrading(villager, p);
 					} else {
-						plugin.PickaxesMerchant.openTrading(p);
+						plugin.PickaxesMerchant.openTrading(villager, p);
 					}
 				} else if (category.equalsIgnoreCase("swords")) {
 					if (plugin.SwordsMerchant.hasCustomer()) {
-						plugin.SwordsMerchant.clone().openTrading(p);
+						plugin.SwordsMerchant.clone().openTrading(villager, p);
 					} else {
-						plugin.SwordsMerchant.openTrading(p);
+						plugin.SwordsMerchant.openTrading(villager, p);
 					}
 				} else if (category.equalsIgnoreCase("bows")) {
 					if (plugin.BowsMerchant.hasCustomer()) {
-						plugin.BowsMerchant.clone().openTrading(p);
+						plugin.BowsMerchant.clone().openTrading(villager, p);
 					} else {
-						plugin.BowsMerchant.openTrading(p);
+						plugin.BowsMerchant.openTrading(villager, p);
 					}
 				} else if (category.equalsIgnoreCase("consumables")) {
 					if (plugin.ConsumablesMerchant.hasCustomer()) {
-						plugin.ConsumablesMerchant.clone().openTrading(p);
+						plugin.ConsumablesMerchant.clone().openTrading(villager, p);
 					} else {
-						plugin.ConsumablesMerchant.openTrading(p);
+						plugin.ConsumablesMerchant.openTrading(villager, p);
 					}
 				} else if (category.equalsIgnoreCase("chests")) {
 					if (plugin.ChestsMerchant.hasCustomer()) {
-						plugin.ChestsMerchant.clone().openTrading(p);
+						plugin.ChestsMerchant.clone().openTrading(villager, p);
 					} else {
-						plugin.ChestsMerchant.openTrading(p);
+						plugin.ChestsMerchant.openTrading(villager, p);
 					}
 				} else if (category.equalsIgnoreCase("potions")) {
 					if (plugin.PotionsMerchant.hasCustomer()) {
-						plugin.PotionsMerchant.clone().openTrading(p);
+						plugin.PotionsMerchant.clone().openTrading(villager, p);
 					} else {
-						plugin.PotionsMerchant.openTrading(p);
+						plugin.PotionsMerchant.openTrading(villager, p);
 					}
 				} else if (category.equalsIgnoreCase("specials")) {
 					if (plugin.SpecialsMerchant.hasCustomer()) {
-						plugin.SpecialsMerchant.clone().openTrading(p);
+						plugin.SpecialsMerchant.clone().openTrading(villager, p);
 					} else {
-						plugin.SpecialsMerchant.openTrading(p);
+						plugin.SpecialsMerchant.openTrading(villager, p);
 					}
 				}
 			}
