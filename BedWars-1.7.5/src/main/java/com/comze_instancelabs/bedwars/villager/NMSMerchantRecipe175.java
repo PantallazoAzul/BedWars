@@ -16,6 +16,7 @@ public class NMSMerchantRecipe175 {
 
 	public NMSMerchantRecipe175(ItemStack item1, ItemStack item2, ItemStack item3) {
 		this.merchantRecipe = new MerchantRecipe(item1, item2, item3);
+		this.merchantRecipe.a(999999);
 	}
 
 	public ItemStack getBuyItem1() {
