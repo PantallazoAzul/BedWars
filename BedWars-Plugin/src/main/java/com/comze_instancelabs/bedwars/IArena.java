@@ -20,6 +20,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -269,5 +271,18 @@ public class IArena extends Arena {
 		}
 		super.stop();
 	}
+    
+    /**
+     * Checks if given entity is removed for resetting the map
+     * @param player
+     * @param e
+     * @return {@code true} for removing the entity
+     */
+	@Override
+    protected boolean isEntityReset(String player, Entity e)
+    {
+		// do not remove villagers (those are npc merchants)
+        return super.isEntityReset(player, e) && e.getType() != EntityType.VILLAGER;
+    }
 
 }
