@@ -357,6 +357,15 @@ public class Main extends JavaPlugin implements Listener {
 				event.setCancelled(true);
 			}
 		}
+		else {
+			if (pli.global_players.containsKey(event.getPlayer().getName())) {
+				final Arena a = this.pli.global_players.get(event.getPlayer().getName());
+				if (a.getArenaState() == ArenaState.INGAME)
+				{
+					 a.getSmartReset().addChanged(event.getBlock(), event.getBlockReplacedState());
+				}
+			}
+		}
 	}
 
 	@EventHandler
