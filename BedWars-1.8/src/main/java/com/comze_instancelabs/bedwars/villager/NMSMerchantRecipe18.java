@@ -15,7 +15,7 @@ public class NMSMerchantRecipe18 {
 	}
 
 	public NMSMerchantRecipe18(ItemStack item1, ItemStack item2, ItemStack item3) {
-		this.merchantRecipe = new MerchantRecipe(item1, item2, item3);
+		this.merchantRecipe = new MerchantRecipe(item1, item2, item3, 0, 99999999);
 	}
 
 	public ItemStack getBuyItem1() {
