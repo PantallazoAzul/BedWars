@@ -291,7 +291,7 @@ public class Main extends JavaPlugin implements Listener {
 	}
 
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		boolean ret = cmdhandler.handleArgs(this, "mgbedwars", "/" + cmd.getName(), sender, args);
+		boolean ret = cmdhandler.handleArgs(this, MinigamesAPI.getAPI().getPermissionGamePrefix("bedwars"), "/" + cmd.getName(), sender, args);
 
 		if (args.length > 0) {
 			if (args[0].equalsIgnoreCase("setupbeds")) {
