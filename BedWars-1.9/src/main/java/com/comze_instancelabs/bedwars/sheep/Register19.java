@@ -16,6 +16,7 @@ package com.comze_instancelabs.bedwars.sheep;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
+import java.util.logging.Level;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -24,6 +25,8 @@ import org.bukkit.craftbukkit.v1_9_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.plugin.Plugin;
+
+import com.comze_instancelabs.minigamesapi.MinigamesAPI;
 
 import net.minecraft.server.v1_9_R1.Entity;
 import net.minecraft.server.v1_9_R1.EntityTypes;
@@ -63,7 +66,7 @@ public class Register19 extends Register {
 
 			return true;
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			MinigamesAPI.getAPI().getLogger().log(Level.WARNING, "exception", ex);
 			return false;
 		}
 	}
