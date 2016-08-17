@@ -16,6 +16,7 @@ package com.comze_instancelabs.bedwars.sheep;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.logging.Level;
 
 import net.minecraft.server.v1_8_R1.GenericAttributes;
 import net.minecraft.server.v1_8_R1.AttributeInstance;
@@ -31,6 +32,8 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Sheep;
 import org.bukkit.event.entity.EntityTargetEvent;
 
+import com.comze_instancelabs.minigamesapi.MinigamesAPI;
+
 public class Sheeep18 extends EntitySheep implements Sheeep {
 
 	public Sheeep18(World world, Entity target) {
@@ -45,7 +48,7 @@ public class Sheeep18 extends EntitySheep implements Sheeep {
 			this.getAttributeInstance(GenericAttributes.b).setValue(128D);
 			this.getAttributeInstance(GenericAttributes.d).setValue(0.37D);
 		} catch (Exception e) {
-			e.printStackTrace();
+			MinigamesAPI.getAPI().getLogger().log(Level.WARNING, "exception", e);
 		}
 		this.goalSelector.a(0, new PathfinderGoalMeleeAttack18(this, EntityHuman.class, 1D, false));
 		// this.goalSelector.a(0, new PathfinderGoalFollowParent(this, 1.1D));

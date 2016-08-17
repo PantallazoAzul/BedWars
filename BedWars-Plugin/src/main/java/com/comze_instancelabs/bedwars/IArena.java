@@ -145,12 +145,7 @@ public class IArena extends Arena {
 
 	@Override
 	public void spectate(final String playername) {
-		try {
-			this.getClass().getMethod("onEliminated", String.class);
-			this.onEliminated(playername);
-		} catch (NoSuchMethodException e) {
-			System.out.println("Please update your MinigamesLib version to work with this Bowbash version!");
-		}
+		this.onEliminated(playername);
 	}
 
 	BukkitTask tt;

@@ -18,6 +18,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.util.logging.Level;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -82,7 +83,7 @@ public class IArenaSetup extends ArenaSetup {
 			fos = new FileOutputStream(f);
 			oos = new BukkitObjectOutputStream(fos);
 		} catch (IOException e) {
-			e.printStackTrace();
+			MinigamesAPI.getAPI().getLogger().log(Level.WARNING, "exception", e);
 		}
 
 		// Remove all saved iron, gold and clay blocks for later refresh // TODO Test out
@@ -113,7 +114,7 @@ public class IArenaSetup extends ArenaSetup {
 					try {
 						oos.writeObject(bl);
 					} catch (IOException e) {
-						System.out.println(e.getMessage());
+						MinigamesAPI.getAPI().getLogger().log(Level.WARNING, "Problems writing arena block", e);
 					}
 				}
 			}
@@ -122,7 +123,7 @@ public class IArenaSetup extends ArenaSetup {
 		try {
 			oos.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			MinigamesAPI.getAPI().getLogger().log(Level.WARNING, "exception", e);
 		}
 
 		MinigamesAPI.getAPI().getLogger().info("saved");

@@ -334,7 +334,7 @@ public class Main extends JavaPlugin implements Listener {
 						int a = displayname.indexOf("#");
 						String arena = displayname.substring(a + 1);
 						String team = displayname.substring(displayname.indexOf(":") + 1, a);
-						System.out.println("#" + arena + " " + team);
+						this.getLogger().fine("#" + arena + " " + team);
 						Util.saveComponentForArena(this, arena, team + "_bed.loc1", event.getBlock().getLocation());
 						Location l = event.getBlock().getLocation();
 						for (int i = -3; i < 3; i++) {
@@ -435,7 +435,7 @@ public class Main extends JavaPlugin implements Listener {
 								}
 							}
 							if (target != null) {
-								System.out.println("# Spawned sheeep for target " + target.getName());
+								this.getLogger().fine("# Spawned sheeep for target " + target.getName());
 								final Sheeep s = reg.spawnSheep(this, event.getClickedBlock().getLocation().add(0D, 1D, 0D), target, colorCodeFromTeam(team));
 								final ItemStack item = event.getPlayer().getItemInHand();
 								l.getBlock().getChunk().load();
