@@ -61,6 +61,7 @@ import com.comze_instancelabs.bedwars.sheep.Register175;
 import com.comze_instancelabs.bedwars.sheep.Register178;
 import com.comze_instancelabs.bedwars.sheep.Register18;
 import com.comze_instancelabs.bedwars.sheep.Register185;
+import com.comze_instancelabs.bedwars.sheep.Register188;
 import com.comze_instancelabs.bedwars.sheep.Register19;
 import com.comze_instancelabs.bedwars.sheep.Register194;
 import com.comze_instancelabs.bedwars.sheep.Sheeep;
@@ -72,6 +73,7 @@ import com.comze_instancelabs.bedwars.villager.Merchant175;
 import com.comze_instancelabs.bedwars.villager.Merchant178;
 import com.comze_instancelabs.bedwars.villager.Merchant18;
 import com.comze_instancelabs.bedwars.villager.Merchant185;
+import com.comze_instancelabs.bedwars.villager.Merchant188;
 import com.comze_instancelabs.bedwars.villager.Merchant19;
 import com.comze_instancelabs.bedwars.villager.Merchant194;
 import com.comze_instancelabs.minigamesapi.Arena;
@@ -212,6 +214,9 @@ public class Main extends JavaPlugin implements Listener {
 		case V1_8_R2:
 			reg = new Register185();
 			break;
+		case V1_8_R3:
+			reg = new Register188();
+			break;
 		case V1_9:
 		case V1_9_R1:
 			reg = new Register19();
@@ -247,6 +252,8 @@ public class Main extends JavaPlugin implements Listener {
 			return new Merchant18(string);
 		case V1_8_R2:
 			return new Merchant185(string);
+		case V1_8_R3:
+			return new Merchant188(string);
 		case V1_9:
 		case V1_9_R1:
 			return new Merchant19(string);
