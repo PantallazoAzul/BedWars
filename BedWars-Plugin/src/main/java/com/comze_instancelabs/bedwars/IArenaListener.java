@@ -14,7 +14,10 @@
 */
 package com.comze_instancelabs.bedwars;
 
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -38,6 +41,19 @@ public class IArenaListener extends ArenaListener {
 	@EventHandler
 	public void onPlayerDeath(PlayerDeathEvent event) {
 		//
+	}
+
+	@EventHandler
+	@Override
+	public void onMobSpawn(CreatureSpawnEvent evt)
+	{
+		// allow spawn of villagers
+		final LivingEntity entity = evt.getEntity();
+		if (entity instanceof Villager)
+		{
+			return;
+		}
+		super.onMobSpawn(evt);
 	}
 
 }
