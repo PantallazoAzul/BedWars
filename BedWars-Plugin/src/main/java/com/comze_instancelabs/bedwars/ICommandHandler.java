@@ -26,6 +26,14 @@ import com.comze_instancelabs.minigamesapi.util.Util;
 public class ICommandHandler extends CommandHandler {
 
 	@Override
+	protected void initCmdDesc()
+	{
+		super.initCmdDesc();
+		
+        this.cmddesc.put("setupbeds <arena>", "Setup arena beds and adds them to inventory.");
+	}
+
+	@Override
 	public boolean setSpawn(PluginInstance pli, CommandSender sender, String[] args, String uber_permission, String cmd, String action, JavaPlugin plugin, Player p) {
 		if (!sender.hasPermission(uber_permission + ".setup")) {
 			sender.sendMessage(pli.getMessagesConfig().no_perm);
