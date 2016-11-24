@@ -25,9 +25,10 @@
   		</dependency>
   		
   		<dependency>
-  			<groupId>net.minecraft.server</groupId>
-  			<artifactId>v1_10_R1</artifactId>
-  			<version>1.10</version>
+  			<groupId>org.spigotmc</groupId>
+  			<artifactId>spigot</artifactId>
+  			<version>1.10-R0.1-SNAPSHOT</version>
+  			<scope>provided</scope>
   		</dependency>
   		<dependency>
   			<groupId>com.github.MCE-Plugins</groupId>
