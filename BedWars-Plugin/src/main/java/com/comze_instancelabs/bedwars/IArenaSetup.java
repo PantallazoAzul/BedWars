@@ -56,7 +56,8 @@ public class IArenaSetup extends ArenaSetup {
 			if (Util.isComponentForArenaValid(plugin, arenaname, "bounds")) {
 				saveArenaToFile(plugin, arenaname);
 			} else {
-				Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "Could not save arena to file because boundaries were not set up.");
+				Bukkit.getConsoleSender().sendMessage(
+						ChatColor.RED + "Could not save arena to file because boundaries were not set up.");
 			}
 		}
 		this.setArenaVIP(plugin, arenaname, false);
@@ -66,7 +67,8 @@ public class IArenaSetup extends ArenaSetup {
 
 	public void saveArenaToFile(JavaPlugin plugin, String arena) {
 		File f = new File(plugin.getDataFolder() + "/" + arena);
-		Cuboid c = new Cuboid(Util.getComponentForArena(plugin, arena, ArenaConfigStrings.BOUNDS_LOW), Util.getComponentForArena(plugin, arena, ArenaConfigStrings.BOUNDS_HIGH));
+		Cuboid c = new Cuboid(Util.getComponentForArena(plugin, arena, ArenaConfigStrings.BOUNDS_LOW),
+				Util.getComponentForArena(plugin, arena, ArenaConfigStrings.BOUNDS_HIGH));
 		Location start = c.getLowLoc();
 		Location end = c.getHighLoc();
 
@@ -74,7 +76,8 @@ public class IArenaSetup extends ArenaSetup {
 		int length = end.getBlockZ() - start.getBlockZ();
 		int height = end.getBlockY() - start.getBlockY();
 
-		MinigamesAPI.getAPI().getLogger().info("BOUNDS: " + Integer.toString(width) + " " + Integer.toString(height) + " " + Integer.toString(length));
+		MinigamesAPI.getAPI().getLogger().info(
+				"BOUNDS: " + Integer.toString(width) + " " + Integer.toString(height) + " " + Integer.toString(length));
 		MinigamesAPI.getAPI().getLogger().info("BLOCKS TO SAVE: " + Integer.toString(width * height * length));
 
 		FileOutputStream fos;
@@ -86,7 +89,8 @@ public class IArenaSetup extends ArenaSetup {
 			MinigamesAPI.getAPI().getLogger().log(Level.WARNING, "exception", e);
 		}
 
-		// Remove all saved iron, gold and clay blocks for later refresh // TODO Test out
+		// Remove all saved iron, gold and clay blocks for later refresh // TODO
+		// Test out
 		PluginInstance pli = MinigamesAPI.getAPI().getPluginInstance(plugin);
 		pli.getArenasConfig().getConfig().set(ArenaConfigStrings.ARENAS_PREFIX + arena + ".iron", null);
 		pli.getArenasConfig().getConfig().set(ArenaConfigStrings.ARENAS_PREFIX + arena + ".gold", null);
@@ -98,7 +102,8 @@ public class IArenaSetup extends ArenaSetup {
 		for (int i = 0; i <= width; i++) {
 			for (int j = 0; j <= height; j++) {
 				for (int k = 0; k <= length; k++) {
-					Block change = c.getWorld().getBlockAt(start.getBlockX() + i, start.getBlockY() + j, start.getBlockZ() + k);
+					Block change = c.getWorld().getBlockAt(start.getBlockX() + i, start.getBlockY() + j,
+							start.getBlockZ() + k);
 
 					tempid++;
 					if (change.getType() == Material.IRON_BLOCK) {
@@ -109,7 +114,8 @@ public class IArenaSetup extends ArenaSetup {
 						Util.saveComponentForArena(plugin, arena, "gold.i" + tempid, change.getLocation());
 					}
 
-					ArenaBlock bl = change.getType() == Material.CHEST ? new ArenaBlock(change, true) : new ArenaBlock(change, false);
+					ArenaBlock bl = change.getType() == Material.CHEST ? new ArenaBlock(change, true)
+							: new ArenaBlock(change, false);
 
 					try {
 						oos.writeObject(bl);

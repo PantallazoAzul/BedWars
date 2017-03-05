@@ -56,10 +56,6 @@ import com.comze_instancelabs.bedwars.gui.TeamSelectorGUI;
 import com.comze_instancelabs.bedwars.sheep.Register;
 import com.comze_instancelabs.bedwars.sheep.Register110;
 import com.comze_instancelabs.bedwars.sheep.Register111;
-import com.comze_instancelabs.bedwars.sheep.Register1710;
-import com.comze_instancelabs.bedwars.sheep.Register172;
-import com.comze_instancelabs.bedwars.sheep.Register175;
-import com.comze_instancelabs.bedwars.sheep.Register178;
 import com.comze_instancelabs.bedwars.sheep.Register18;
 import com.comze_instancelabs.bedwars.sheep.Register185;
 import com.comze_instancelabs.bedwars.sheep.Register188;
@@ -69,10 +65,6 @@ import com.comze_instancelabs.bedwars.sheep.Sheeep;
 import com.comze_instancelabs.bedwars.villager.Merchant;
 import com.comze_instancelabs.bedwars.villager.Merchant110;
 import com.comze_instancelabs.bedwars.villager.Merchant111;
-import com.comze_instancelabs.bedwars.villager.Merchant1710;
-import com.comze_instancelabs.bedwars.villager.Merchant172;
-import com.comze_instancelabs.bedwars.villager.Merchant175;
-import com.comze_instancelabs.bedwars.villager.Merchant178;
 import com.comze_instancelabs.bedwars.villager.Merchant18;
 import com.comze_instancelabs.bedwars.villager.Merchant185;
 import com.comze_instancelabs.bedwars.villager.Merchant188;
@@ -127,7 +119,9 @@ public class Main extends JavaPlugin implements Listener {
 
 	public void onEnable() {
 		m = this;
-		api = MinigamesAPI.getAPI().setupAPI(this, "bedwars", IArena.class, new ArenasConfig(this), new MessagesConfig(this), new IClassesConfig(this), new StatsConfig(this, false), new DefaultConfig(this, false), true);
+		api = MinigamesAPI.getAPI().setupAPI(this, "bedwars", IArena.class, new ArenasConfig(this),
+				new MessagesConfig(this), new IClassesConfig(this), new StatsConfig(this, false),
+				new DefaultConfig(this, false), true);
 		PluginInstance pinstance = api.pinstances.get(this);
 		pinstance.addLoadedArenas(loadArenas(this, pinstance.getArenasConfig()));
 		Bukkit.getPluginManager().registerEvents(this, this);
@@ -150,11 +144,13 @@ public class Main extends JavaPlugin implements Listener {
 			}
 		}
 		if (continue_) {
-			// pli.getArenaAchievements().addDefaultAchievement("destroy_hundred_blocks_with_bow", "Destroy 100 blocks with your bow in one game!",
+			// pli.getArenaAchievements().addDefaultAchievement("destroy_hundred_blocks_with_bow",
+			// "Destroy 100 blocks with your bow in one game!",
 			// 100);
 			// pli.getArenaAchievements().addDefaultAchievement("destroy_thousand_blocks_with_bow_alltime",
 			// "Destroy 1000 blocks with your bow all-time!", 1000);
-			// pli.getArenaAchievements().addDefaultAchievement("win_game_with_one_life", "Win a game with one life left!", 200);
+			// pli.getArenaAchievements().addDefaultAchievement("win_game_with_one_life",
+			// "Win a game with one life left!", 200);
 			// pli.getAchievementsConfig().getConfig().options().copyDefaults(true);
 			// pli.getAchievementsConfig().saveConfig();
 		}
@@ -183,12 +179,12 @@ public class Main extends JavaPlugin implements Listener {
 		loadTrades(config, "specialsgui.trades.", SpecialsMerchant);
 
 		// Bed message
-		pli.getMessagesConfig().getConfig().addDefault("messages.bed_destroyed", "&cTeam &4<team>&c's bed was destroyed!");
+		pli.getMessagesConfig().getConfig().addDefault("messages.bed_destroyed",
+				"&cTeam &4<team>&c's bed was destroyed!");
 		pli.getMessagesConfig().getConfig().options().copyDefaults(true);
 		pli.getMessagesConfig().saveConfig();
 
-		switch (MinigamesAPI.SERVER_VERSION)
-		{
+		switch (MinigamesAPI.SERVER_VERSION) {
 		case Unknown:
 		default:
 			break;
@@ -199,19 +195,6 @@ public class Main extends JavaPlugin implements Listener {
 		case V1_11:
 		case V1_11_R1:
 			reg = new Register111();
-			break;
-		case V1_7:
-		case V1_7_R1:
-			reg = new Register172();
-			break;
-		case V1_7_R2:
-			reg = new Register175();
-			break;
-		case V1_7_R3:
-			reg = new Register178();
-			break;
-		case V1_7_R4:
-			reg = new Register1710();
 			break;
 		case V1_8:
 		case V1_8_R1:
@@ -234,10 +217,8 @@ public class Main extends JavaPlugin implements Listener {
 		reg.registerEntities();
 	}
 
-	private Merchant createMerchant(String string)
-	{
-		switch (MinigamesAPI.SERVER_VERSION)
-		{
+	private Merchant createMerchant(String string) {
+		switch (MinigamesAPI.SERVER_VERSION) {
 		case Unknown:
 		default:
 			break;
@@ -247,15 +228,6 @@ public class Main extends JavaPlugin implements Listener {
 		case V1_10:
 		case V1_10_R1:
 			return new Merchant110(string);
-		case V1_7:
-		case V1_7_R1:
-			return new Merchant172(string);
-		case V1_7_R2:
-			return new Merchant175(string);
-		case V1_7_R3:
-			return new Merchant178(string);
-		case V1_7_R4:
-			return new Merchant1710(string);
 		case V1_8:
 		case V1_8_R1:
 			return new Merchant18(string);
@@ -302,12 +274,15 @@ public class Main extends JavaPlugin implements Listener {
 	public static IArena initArena(String arena) {
 		IArena a = new IArena(m, arena);
 		ArenaSetup s = MinigamesAPI.getAPI().pinstances.get(m).arenaSetup;
-		a.init(Util.getSignLocationFromArena(m, arena), Util.getAllSpawns(m, arena), Util.getMainLobby(m), Util.getComponentForArena(m, arena, "lobby"), s.getPlayerCount(m, arena, true), s.getPlayerCount(m, arena, false), s.getArenaVIP(m, arena));
+		a.init(Util.getSignLocationFromArena(m, arena), Util.getAllSpawns(m, arena), Util.getMainLobby(m),
+				Util.getComponentForArena(m, arena, "lobby"), s.getPlayerCount(m, arena, true),
+				s.getPlayerCount(m, arena, false), s.getArenaVIP(m, arena));
 		return a;
 	}
 
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		boolean ret = cmdhandler.handleArgs(this, MinigamesAPI.getAPI().getPermissionGamePrefix("bedwars"), "/" + cmd.getName(), sender, args);
+		boolean ret = cmdhandler.handleArgs(this, MinigamesAPI.getAPI().getPermissionGamePrefix("bedwars"),
+				"/" + cmd.getName(), sender, args);
 
 		if (args.length > 0) {
 			if (args[0].equalsIgnoreCase("setupbeds")) {
@@ -323,7 +298,8 @@ public class Main extends JavaPlugin implements Listener {
 
 						p.updateInventory();
 					} else {
-						sender.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.RED + "-" + ChatColor.DARK_GRAY + "]" + ChatColor.GRAY + " Usage: " + cmd.getName() + " setupbeds <arena> <team>");
+						sender.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.RED + "-" + ChatColor.DARK_GRAY + "]"
+								+ ChatColor.GRAY + " Usage: " + cmd.getName() + " setupbeds <arena> <team>");
 					}
 				}
 			}
@@ -356,7 +332,8 @@ public class Main extends JavaPlugin implements Listener {
 						for (int i = -3; i < 3; i++) {
 							for (int j = -3; j < 3; j++) {
 								Location l_ = l.clone().add(i, 0, j);
-								if (l.getBlockX() == l_.getBlockX() && l.getBlockY() == l_.getBlockY() && l.getBlockZ() == l_.getBlockZ()) {
+								if (l.getBlockX() == l_.getBlockX() && l.getBlockY() == l_.getBlockY()
+										&& l.getBlockZ() == l_.getBlockZ()) {
 									// Skip
 								} else {
 									if (l_.getBlock().getType() == Material.BED_BLOCK) {
@@ -372,13 +349,11 @@ public class Main extends JavaPlugin implements Listener {
 			if (pli.global_players.containsKey(event.getPlayer().getName())) {
 				event.setCancelled(true);
 			}
-		}
-		else {
+		} else {
 			if (pli.global_players.containsKey(event.getPlayer().getName())) {
 				final Arena a = this.pli.global_players.get(event.getPlayer().getName());
-				if (a.getArenaState() == ArenaState.INGAME)
-				{
-					 a.getSmartReset().addChanged(event.getBlock(), event.getBlockReplacedState());
+				if (a.getArenaState() == ArenaState.INGAME) {
+					a.getSmartReset().addChanged(event.getBlock(), event.getBlockReplacedState());
 				}
 			}
 		}
@@ -452,7 +427,9 @@ public class Main extends JavaPlugin implements Listener {
 							}
 							if (target != null) {
 								this.getLogger().fine("# Spawned sheeep for target " + target.getName());
-								final Sheeep s = reg.spawnSheep(this, event.getClickedBlock().getLocation().add(0D, 1D, 0D), target, colorCodeFromTeam(team));
+								final Sheeep s = reg.spawnSheep(this,
+										event.getClickedBlock().getLocation().add(0D, 1D, 0D), target,
+										colorCodeFromTeam(team));
 								final ItemStack item = event.getPlayer().getItemInHand();
 								l.getBlock().getChunk().load();
 								Bukkit.getScheduler().runTaskLater(this, new Runnable() {
@@ -491,28 +468,32 @@ public class Main extends JavaPlugin implements Listener {
 						if (team.equalsIgnoreCase("red")) {
 							if (a.red_bed) {
 								a.onEliminated(playername);
-								Util.teleportPlayerFixed(p, Util.getComponentForArena(m, a.getName(), "spawns.spawn" + m.pteam.get(playername)));
+								Util.teleportPlayerFixed(p, Util.getComponentForArena(m, a.getName(),
+										"spawns.spawn" + m.pteam.get(playername)));
 							} else {
 								a.spectate(p.getName(), true);
 							}
 						} else if (team.equalsIgnoreCase("blue")) {
 							if (a.blue_bed) {
 								a.onEliminated(playername);
-								Util.teleportPlayerFixed(p, Util.getComponentForArena(m, a.getName(), "spawns.spawn" + m.pteam.get(playername)));
+								Util.teleportPlayerFixed(p, Util.getComponentForArena(m, a.getName(),
+										"spawns.spawn" + m.pteam.get(playername)));
 							} else {
 								a.spectate(p.getName(), true);
 							}
 						} else if (team.equalsIgnoreCase("green")) {
 							if (a.green_bed) {
 								a.onEliminated(playername);
-								Util.teleportPlayerFixed(p, Util.getComponentForArena(m, a.getName(), "spawns.spawn" + m.pteam.get(playername)));
+								Util.teleportPlayerFixed(p, Util.getComponentForArena(m, a.getName(),
+										"spawns.spawn" + m.pteam.get(playername)));
 							} else {
 								a.spectate(p.getName(), true);
 							}
 						} else if (team.equalsIgnoreCase("yellow")) {
 							if (a.yellow_bed) {
 								a.onEliminated(playername);
-								Util.teleportPlayerFixed(p, Util.getComponentForArena(m, a.getName(), "spawns.spawn" + m.pteam.get(playername)));
+								Util.teleportPlayerFixed(p, Util.getComponentForArena(m, a.getName(),
+										"spawns.spawn" + m.pteam.get(playername)));
 							} else {
 								a.spectate(p.getName(), true);
 							}
@@ -539,7 +520,8 @@ public class Main extends JavaPlugin implements Listener {
 					if (team.equalsIgnoreCase("red")) {
 						if (a.red_bed) {
 							a.onEliminated(playername);
-							Util.teleportPlayerFixed(p, Util.getComponentForArena(m, a.getName(), "spawns.spawn" + m.pteam.get(playername)));
+							Util.teleportPlayerFixed(p, Util.getComponentForArena(m, a.getName(),
+									"spawns.spawn" + m.pteam.get(playername)));
 						} else {
 							a.spectate(p.getName(), true);
 							a.red--;
@@ -547,7 +529,8 @@ public class Main extends JavaPlugin implements Listener {
 					} else if (team.equalsIgnoreCase("blue")) {
 						if (a.blue_bed) {
 							a.onEliminated(playername);
-							Util.teleportPlayerFixed(p, Util.getComponentForArena(m, a.getName(), "spawns.spawn" + m.pteam.get(playername)));
+							Util.teleportPlayerFixed(p, Util.getComponentForArena(m, a.getName(),
+									"spawns.spawn" + m.pteam.get(playername)));
 						} else {
 							a.spectate(p.getName(), true);
 							a.blue--;
@@ -555,7 +538,8 @@ public class Main extends JavaPlugin implements Listener {
 					} else if (team.equalsIgnoreCase("green")) {
 						if (a.green_bed) {
 							a.onEliminated(playername);
-							Util.teleportPlayerFixed(p, Util.getComponentForArena(m, a.getName(), "spawns.spawn" + m.pteam.get(playername)));
+							Util.teleportPlayerFixed(p, Util.getComponentForArena(m, a.getName(),
+									"spawns.spawn" + m.pteam.get(playername)));
 						} else {
 							a.spectate(p.getName(), true);
 							a.green--;
@@ -563,7 +547,8 @@ public class Main extends JavaPlugin implements Listener {
 					} else if (team.equalsIgnoreCase("yellow")) {
 						if (a.yellow_bed) {
 							a.onEliminated(playername);
-							Util.teleportPlayerFixed(p, Util.getComponentForArena(m, a.getName(), "spawns.spawn" + m.pteam.get(playername)));
+							Util.teleportPlayerFixed(p, Util.getComponentForArena(m, a.getName(),
+									"spawns.spawn" + m.pteam.get(playername)));
 						} else {
 							a.spectate(p.getName(), true);
 							a.yellow--;
@@ -679,19 +664,37 @@ public class Main extends JavaPlugin implements Listener {
 						return;
 					}
 					a.getSmartReset().addChanged(event.getBlock(), event.getBlock().getType().equals(Material.CHEST));
-					a.getSmartReset().addChanged(event.getBlock().getLocation().clone().add(1D, 0D, 0D).getBlock(), event.getBlock().getLocation().clone().add(1D, 0D, 1D).getBlock().getType().equals(Material.CHEST));
-					a.getSmartReset().addChanged(event.getBlock().getLocation().clone().add(-1D, 0D, 0D).getBlock(), event.getBlock().getLocation().clone().add(1D, 0D, -1D).getBlock().getType().equals(Material.CHEST));
-					a.getSmartReset().addChanged(event.getBlock().getLocation().clone().add(0D, 0D, 1D).getBlock(), event.getBlock().getLocation().clone().add(-1D, 0D, 1D).getBlock().getType().equals(Material.CHEST));
-					a.getSmartReset().addChanged(event.getBlock().getLocation().clone().add(0D, 0D, -1D).getBlock(), event.getBlock().getLocation().clone().add(-1D, 0D, -1D).getBlock().getType().equals(Material.CHEST));
+					a.getSmartReset().addChanged(event.getBlock().getLocation().clone().add(1D, 0D, 0D).getBlock(),
+							event.getBlock().getLocation().clone().add(1D, 0D, 1D).getBlock().getType()
+									.equals(Material.CHEST));
+					a.getSmartReset().addChanged(event.getBlock().getLocation().clone().add(-1D, 0D, 0D).getBlock(),
+							event.getBlock().getLocation().clone().add(1D, 0D, -1D).getBlock().getType()
+									.equals(Material.CHEST));
+					a.getSmartReset().addChanged(event.getBlock().getLocation().clone().add(0D, 0D, 1D).getBlock(),
+							event.getBlock().getLocation().clone().add(-1D, 0D, 1D).getBlock().getType()
+									.equals(Material.CHEST));
+					a.getSmartReset().addChanged(event.getBlock().getLocation().clone().add(0D, 0D, -1D).getBlock(),
+							event.getBlock().getLocation().clone().add(-1D, 0D, -1D).getBlock().getType()
+									.equals(Material.CHEST));
 					event.getBlock().setType(Material.AIR);
 					for (String p_ : a.getAllPlayers()) {
 						if (Validator.isPlayerOnline(p_)) {
-							Bukkit.getPlayer(p_).sendMessage(ChatColor.translateAlternateColorCodes('&', pli.getMessagesConfig().getConfig().getString("messages.bed_destroyed").replaceAll("<team>", Character.toUpperCase(team.charAt(0)) + team.substring(1))));
+							Bukkit.getPlayer(p_)
+									.sendMessage(ChatColor.translateAlternateColorCodes('&', pli.getMessagesConfig()
+											.getConfig().getString("messages.bed_destroyed").replaceAll("<team>",
+													Character.toUpperCase(team.charAt(0)) + team.substring(1))));
 						}
 					}
 					return;
 				}
-				if (event.getBlock().getType() != Material.IRON_BLOCK && event.getBlock().getType() != Material.ENDER_CHEST && event.getBlock().getType() != Material.TNT && event.getBlock().getType() != Material.SANDSTONE && event.getBlock().getType() != Material.GLOWSTONE && event.getBlock().getType() != Material.ENDER_STONE && event.getBlock().getType() != Material.GLASS && event.getBlock().getType() != Material.LADDER && event.getBlock().getType() != Material.CHEST) {
+				if (event.getBlock().getType() != Material.IRON_BLOCK
+						&& event.getBlock().getType() != Material.ENDER_CHEST
+						&& event.getBlock().getType() != Material.TNT
+						&& event.getBlock().getType() != Material.SANDSTONE
+						&& event.getBlock().getType() != Material.GLOWSTONE
+						&& event.getBlock().getType() != Material.ENDER_STONE
+						&& event.getBlock().getType() != Material.GLASS && event.getBlock().getType() != Material.LADDER
+						&& event.getBlock().getType() != Material.CHEST) {
 					event.setCancelled(true);
 				}
 			}
@@ -713,7 +716,8 @@ public class Main extends JavaPlugin implements Listener {
 		for (String team : temp.keySet()) {
 			if (temp.get(team) != null) {
 				Location l_ = temp.get(team);
-				if (l.getBlockX() == l_.getBlockX() && l.getBlockY() == l_.getBlockY() && l.getBlockZ() == l_.getBlockZ()) {
+				if (l.getBlockX() == l_.getBlockX() && l.getBlockY() == l_.getBlockY()
+						&& l.getBlockZ() == l_.getBlockZ()) {
 					return team.substring(0, team.indexOf("_"));
 				}
 			}
@@ -736,7 +740,8 @@ public class Main extends JavaPlugin implements Listener {
 				return;
 			}
 			String team = m.pteam.get(p.getName());
-			String msg = String.format(ChatColor.GRAY + "[" + ChatColor.valueOf(team.toUpperCase()) + team + ChatColor.GRAY + "] " + event.getFormat(), p.getName(), event.getMessage());
+			String msg = String.format(ChatColor.GRAY + "[" + ChatColor.valueOf(team.toUpperCase()) + team
+					+ ChatColor.GRAY + "] " + event.getFormat(), p.getName(), event.getMessage());
 			for (Player receiver : event.getRecipients()) {
 				if (pli.global_players.containsKey(receiver.getName())) {
 					if (pli.global_players.get(receiver.getName()) == pli.global_players.get(p.getName())) {

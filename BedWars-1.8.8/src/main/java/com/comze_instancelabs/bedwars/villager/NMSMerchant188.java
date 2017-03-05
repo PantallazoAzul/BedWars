@@ -45,7 +45,7 @@ public class NMSMerchant188 {
 
 	public void openTrading(Villager villager, EntityPlayer player, String title) {
 		this.c = player;
-		final EntityVillager evil = ((CraftVillager)villager).getHandle();
+		final EntityVillager evil = ((CraftVillager) villager).getHandle();
 		evil.a_(player);
 		evil.getOffers(player).clear();
 		evil.getOffers(player).addAll(this.o.getHandle());

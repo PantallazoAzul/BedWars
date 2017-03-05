@@ -66,6 +66,7 @@ public class IArena extends Arena {
 
 	@Override
 	public void joinPlayerLobby(final String playername) {
+		Bukkit.broadcastMessage("This is a test... thanks for your time.");
 		Bukkit.getScheduler().runTaskLater(m, new Runnable() {
 			public void run() {
 				Player p = Bukkit.getPlayer(playername);
@@ -73,7 +74,7 @@ public class IArena extends Arena {
 					if (m.pli.global_players.containsKey(p.getName())) {
 						ItemStack teamselector = new ItemStack(Material.WOOL, 1, (byte) 14);
 						ItemMeta itemm = teamselector.getItemMeta();
-						itemm.setDisplayName(ChatColor.RED + "Team");
+						itemm.setDisplayName(ChatColor.RED + "Equipo");
 						teamselector.setItemMeta(itemm);
 						p.getInventory().setItem(0, teamselector);
 						p.updateInventory();
@@ -92,7 +93,7 @@ public class IArena extends Arena {
 		if (c == 0) {
 			if (Util.isComponentForArenaValid(m, this.getName(), "spawns.spawnred")) {
 				m.pteam.put(playername, "red");
-				Bukkit.getPlayer(playername).sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "RED Team");
+				Bukkit.getPlayer(playername).sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "Equipo ROJO");
 				red++;
 			} else {
 				c++;
@@ -102,7 +103,7 @@ public class IArena extends Arena {
 		} else if (c == 1) {
 			if (Util.isComponentForArenaValid(m, this.getName(), "spawns.spawngreen")) {
 				m.pteam.put(playername, "green");
-				Bukkit.getPlayer(playername).sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "GREEN Team");
+				Bukkit.getPlayer(playername).sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Equipo VERDE");
 				green++;
 			} else {
 				c++;
@@ -111,7 +112,7 @@ public class IArena extends Arena {
 		} else if (c == 2) {
 			if (Util.isComponentForArenaValid(m, this.getName(), "spawns.spawnblue")) {
 				m.pteam.put(playername, "blue");
-				Bukkit.getPlayer(playername).sendMessage(ChatColor.BLUE + "" + ChatColor.BOLD + "BLUE Team");
+				Bukkit.getPlayer(playername).sendMessage(ChatColor.BLUE + "" + ChatColor.BOLD + "Equipo AZUL");
 				blue++;
 			} else {
 				c++;
@@ -120,7 +121,7 @@ public class IArena extends Arena {
 		} else if (c == 3) {
 			if (Util.isComponentForArenaValid(m, this.getName(), "spawns.spawnyellow")) {
 				m.pteam.put(playername, "yellow");
-				Bukkit.getPlayer(playername).sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "YELLOW Team");
+				Bukkit.getPlayer(playername).sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "Equipo AMARILLO");
 				yellow++;
 			} else {
 				tries_temp++;
@@ -153,6 +154,7 @@ public class IArena extends Arena {
 
 	@Override
 	public void start(boolean tp) {
+		@SuppressWarnings("unused")
 		int t = this.getAllPlayers().size() / 2;
 
 		final IArena a = this;
@@ -160,7 +162,8 @@ public class IArena extends Arena {
 		for (String p_ : a.getArena().getAllPlayers()) {
 			Player p = Bukkit.getPlayer(p_);
 			if (m.pteam.containsKey(p_)) {
-				Util.teleportPlayerFixed(p, Util.getComponentForArena(m, this.getName(), "spawns.spawn" + m.pteam.get(p_)));
+				Util.teleportPlayerFixed(p,
+						Util.getComponentForArena(m, this.getName(), "spawns.spawn" + m.pteam.get(p_)));
 			}
 		}
 
@@ -171,17 +174,23 @@ public class IArena extends Arena {
 		// load clay, iron, gold locations
 		PluginInstance pli = MinigamesAPI.getAPI().getPluginInstance(m);
 		if (pli.getArenasConfig().getConfig().isSet(ArenaConfigStrings.ARENAS_PREFIX + this.getName() + ".clay")) {
-			for (String key : pli.getArenasConfig().getConfig().getConfigurationSection(ArenaConfigStrings.ARENAS_PREFIX + this.getName() + ".clay").getKeys(false)) {
+			for (String key : pli.getArenasConfig().getConfig()
+					.getConfigurationSection(ArenaConfigStrings.ARENAS_PREFIX + this.getName() + ".clay")
+					.getKeys(false)) {
 				clay_locs.add(Util.getComponentForArena(m, this.getName(), "clay." + key));
 			}
 		}
 		if (pli.getArenasConfig().getConfig().isSet(ArenaConfigStrings.ARENAS_PREFIX + this.getName() + ".iron")) {
-			for (String key : pli.getArenasConfig().getConfig().getConfigurationSection(ArenaConfigStrings.ARENAS_PREFIX + this.getName() + ".iron").getKeys(false)) {
+			for (String key : pli.getArenasConfig().getConfig()
+					.getConfigurationSection(ArenaConfigStrings.ARENAS_PREFIX + this.getName() + ".iron")
+					.getKeys(false)) {
 				iron_locs.add(Util.getComponentForArena(m, this.getName(), "iron." + key));
 			}
 		}
 		if (pli.getArenasConfig().getConfig().isSet(ArenaConfigStrings.ARENAS_PREFIX + this.getName() + ".gold")) {
-			for (String key : pli.getArenasConfig().getConfig().getConfigurationSection(ArenaConfigStrings.ARENAS_PREFIX + this.getName() + ".gold").getKeys(false)) {
+			for (String key : pli.getArenasConfig().getConfig()
+					.getConfigurationSection(ArenaConfigStrings.ARENAS_PREFIX + this.getName() + ".gold")
+					.getKeys(false)) {
 				gold_locs.add(Util.getComponentForArena(m, this.getName(), "gold." + key));
 			}
 		}
@@ -199,7 +208,8 @@ public class IArena extends Arena {
 				if (current_spawn_index_iron > 10) {
 					for (Location l : iron_locs) {
 						if (l != null) {
-							dropped_items.add(l.getWorld().dropItemNaturally(l.clone().add(0D, 1D, 0D), new ItemStack(Material.IRON_INGOT)));
+							dropped_items.add(l.getWorld().dropItemNaturally(l.clone().add(0D, 1D, 0D),
+									new ItemStack(Material.IRON_INGOT)));
 						}
 					}
 					current_spawn_index_iron = 0;
@@ -207,14 +217,16 @@ public class IArena extends Arena {
 				if (current_spawn_index_gold > 30) {
 					for (Location l : gold_locs) {
 						if (l != null) {
-							dropped_items.add(l.getWorld().dropItemNaturally(l.clone().add(0D, 1D, 0D), new ItemStack(Material.GOLD_INGOT)));
+							dropped_items.add(l.getWorld().dropItemNaturally(l.clone().add(0D, 1D, 0D),
+									new ItemStack(Material.GOLD_INGOT)));
 						}
 					}
 					current_spawn_index_gold = 0;
 				}
 				for (Location l : clay_locs) {
 					if (l != null) {
-						dropped_items.add(l.getWorld().dropItemNaturally(l.clone().add(0D, 1D, 0D), new ItemStack(Material.CLAY_BRICK)));
+						dropped_items.add(l.getWorld().dropItemNaturally(l.clone().add(0D, 1D, 0D),
+								new ItemStack(Material.CLAY_BRICK)));
 					}
 				}
 			}
@@ -266,18 +278,18 @@ public class IArena extends Arena {
 		}
 		super.stop();
 	}
-    
-    /**
-     * Checks if given entity is removed for resetting the map
-     * @param player
-     * @param e
-     * @return {@code true} for removing the entity
-     */
+
+	/**
+	 * Checks if given entity is removed for resetting the map
+	 * 
+	 * @param player
+	 * @param e
+	 * @return {@code true} for removing the entity
+	 */
 	@Override
-    protected boolean isEntityReset(String player, Entity e)
-    {
+	protected boolean isEntityReset(String player, Entity e) {
 		// do not remove villagers (those are npc merchants)
-        return super.isEntityReset(player, e) && e.getType() != EntityType.VILLAGER;
-    }
+		return super.isEntityReset(player, e) && e.getType() != EntityType.VILLAGER;
+	}
 
 }

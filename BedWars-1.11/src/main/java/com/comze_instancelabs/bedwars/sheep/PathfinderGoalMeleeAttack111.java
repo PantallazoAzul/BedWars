@@ -20,7 +20,7 @@ import net.minecraft.server.v1_11_R1.PathfinderGoalMeleeAttack;
 public class PathfinderGoalMeleeAttack111 extends PathfinderGoalMeleeAttack {
 
 	EntityCreature b;
-	
+
 	public PathfinderGoalMeleeAttack111(EntityCreature entitycreature, double d0, boolean flag) {
 		super(entitycreature, d0, flag);
 		b = entitycreature;
@@ -29,6 +29,6 @@ public class PathfinderGoalMeleeAttack111 extends PathfinderGoalMeleeAttack {
 	@Override
 	public void e() {
 		b.getNavigation().a(b.getGoalTarget());
-    }
-	
+	}
+
 }

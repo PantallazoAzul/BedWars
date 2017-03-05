@@ -15,10 +15,10 @@
 	</parent>
       		<modules>
 				<module>BedWars-API</module>
-				<module>BedWars-1.7.2</module>
-				<module>BedWars-1.7.5</module>
-				<module>BedWars-1.7.9</module>
-				<module>BedWars-1.7.10</module>
+				
+				
+				
+				
 				<module>BedWars-1.8</module>
 				<module>BedWars-1.8.5</module>
 				<module>BedWars-1.8.8</module>

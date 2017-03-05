@@ -49,12 +49,18 @@ public class GUIConfig {
 		this.getConfig().addDefault("blocksgui.trades.trade5.items", "20*1;336*4");
 		this.getConfig().addDefault("blocksgui.trades.trade6.items", "42*1;265*3");
 
-		this.getConfig().addDefault("armorgui.trades.trade1.items", "298#PROTECTION_ENVIRONMENTAL:1#DURABILITY:1*1;336*1");
-		this.getConfig().addDefault("armorgui.trades.trade2.items", "300#PROTECTION_ENVIRONMENTAL:1#DURABILITY:1*1;336*1");
-		this.getConfig().addDefault("armorgui.trades.trade3.items", "301#PROTECTION_ENVIRONMENTAL:1#DURABILITY:1*1;336*1");
-		this.getConfig().addDefault("armorgui.trades.trade4.items", "303#PROTECTION_ENVIRONMENTAL:1#DURABILITY:1*1;265*1");
-		this.getConfig().addDefault("armorgui.trades.trade5.items", "303#PROTECTION_ENVIRONMENTAL:2#DURABILITY:1*1;265*3");
-		this.getConfig().addDefault("armorgui.trades.trade6.items", "303#PROTECTION_ENVIRONMENTAL:3#DURABILITY:1*1;265*7");
+		this.getConfig().addDefault("armorgui.trades.trade1.items",
+				"298#PROTECTION_ENVIRONMENTAL:1#DURABILITY:1*1;336*1");
+		this.getConfig().addDefault("armorgui.trades.trade2.items",
+				"300#PROTECTION_ENVIRONMENTAL:1#DURABILITY:1*1;336*1");
+		this.getConfig().addDefault("armorgui.trades.trade3.items",
+				"301#PROTECTION_ENVIRONMENTAL:1#DURABILITY:1*1;336*1");
+		this.getConfig().addDefault("armorgui.trades.trade4.items",
+				"303#PROTECTION_ENVIRONMENTAL:1#DURABILITY:1*1;265*1");
+		this.getConfig().addDefault("armorgui.trades.trade5.items",
+				"303#PROTECTION_ENVIRONMENTAL:2#DURABILITY:1*1;265*3");
+		this.getConfig().addDefault("armorgui.trades.trade6.items",
+				"303#PROTECTION_ENVIRONMENTAL:3#DURABILITY:1*1;265*7");
 
 		this.getConfig().addDefault("pickaxesgui.trades.trade1.items", "270#DIG_SPEED:1#DURABILITY:1*1;336*1");
 		this.getConfig().addDefault("pickaxesgui.trades.trade2.items", "274#DIG_SPEED:1#DURABILITY:1*1;265*2");
@@ -67,7 +73,8 @@ public class GUIConfig {
 
 		this.getConfig().addDefault("bowsgui.trades.trade1.items", "261#ARROW_INFINITE:1*1;266*3");
 		this.getConfig().addDefault("bowsgui.trades.trade2.items", "261#ARROW_INFINITE:1#ARROW_DAMAGE:1*1;266*7");
-		this.getConfig().addDefault("bowsgui.trades.trade3.items", "261#ARROW_INFINITE:1#ARROW_DAMAGE:1#ARROW_KNOCKBACK:1*1;266*13");
+		this.getConfig().addDefault("bowsgui.trades.trade3.items",
+				"261#ARROW_INFINITE:1#ARROW_DAMAGE:1#ARROW_KNOCKBACK:1*1;266*13");
 		this.getConfig().addDefault("bowsgui.trades.trade4.items", "262*1;266*1");
 
 		this.getConfig().addDefault("consumablesgui.trades.trade1.items", "260*1;336*1");

@@ -23,9 +23,9 @@ public abstract class Register {
 	public boolean registerEntities() {
 		return false;
 	}
-	
-	public Sheeep spawnSheep(Plugin m, Location t, Player target, final int color){
+
+	public Sheeep spawnSheep(Plugin m, Location t, Player target, final int color) {
 		return null;
 	}
-	
+
 }

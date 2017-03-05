@@ -45,12 +45,10 @@ public class IArenaListener extends ArenaListener {
 
 	@EventHandler
 	@Override
-	public void onMobSpawn(CreatureSpawnEvent evt)
-	{
+	public void onMobSpawn(CreatureSpawnEvent evt) {
 		// allow spawn of villagers
 		final LivingEntity entity = evt.getEntity();
-		if (entity instanceof Villager)
-		{
+		if (entity instanceof Villager) {
 			return;
 		}
 		super.onMobSpawn(evt);

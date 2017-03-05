@@ -19,7 +19,7 @@ import org.bukkit.entity.Villager;
 import org.bukkit.inventory.ItemStack;
 
 public interface Merchant {
-	
+
 	void addOffer(ItemStack item1, ItemStack item2, ItemStack re);
 
 	void addOffer(ItemStack item, ItemStack re);

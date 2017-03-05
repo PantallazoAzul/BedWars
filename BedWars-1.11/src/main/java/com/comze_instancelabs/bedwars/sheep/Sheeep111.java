@@ -47,7 +47,8 @@ public class Sheeep111 extends EntitySheep implements Sheeep {
 		} catch (Exception e) {
 			MinigamesAPI.getAPI().getLogger().log(Level.WARNING, "exception", e);
 		}
-		this.goalSelector.a(0, new PathfinderGoalMeleeAttack111(this, /*EntityHuman.class,*/ 1D, false));
+		this.goalSelector.a(0,
+				new PathfinderGoalMeleeAttack111(this, /* EntityHuman.class, */ 1D, false));
 		// this.goalSelector.a(0, new PathfinderGoalFollowParent(this, 1.1D));
 		this.setGoalTarget((EntityLiving) target, EntityTargetEvent.TargetReason.OWNER_ATTACKED_TARGET, false);
 		((Sheep) this.getBukkitEntity()).setTarget((LivingEntity) target.getBukkitEntity());

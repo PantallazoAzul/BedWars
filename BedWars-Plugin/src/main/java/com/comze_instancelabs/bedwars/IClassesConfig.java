@@ -22,7 +22,7 @@ public class IClassesConfig extends ClassesConfig {
 
 	public IClassesConfig(JavaPlugin plugin) {
 		super(plugin, true);
-		this.getConfig().options().header("There are no classes for BedWars.");
+		this.getConfig().options().header("No hay clases para BedWars.");
 
 		this.getConfig().options().copyDefaults(true);
 		this.saveConfig();

@@ -31,17 +31,18 @@ import net.minecraft.server.v1_11_R1.World;
 public class Register111 extends Register {
 
 	public boolean registerEntities() {
-		
+
 		MinecraftKey localMinecraftKey = new MinecraftKey("Sheeep");
 		EntityTypes.b.a(91, localMinecraftKey, Sheeep111.class);
 		EntityTypes.d.add(localMinecraftKey);
-		
+
 		return true;
 	}
 
 	public Sheeep111 spawnSheep(Plugin m, final Location t, Player target, final int color) {
 		final Object w = ((CraftWorld) t.getWorld()).getHandle();
-		final Sheeep111 t_ = new Sheeep111((World) ((CraftWorld) t.getWorld()).getHandle(), (Entity) ((CraftPlayer) target).getHandle());
+		final Sheeep111 t_ = new Sheeep111((World) ((CraftWorld) t.getWorld()).getHandle(),
+				(Entity) ((CraftPlayer) target).getHandle());
 
 		Bukkit.getScheduler().runTask(m, new Runnable() {
 			public void run() {

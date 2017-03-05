@@ -73,7 +73,8 @@ public class Register194 extends Register {
 
 	public Sheeep194 spawnSheep(Plugin m, final Location t, Player target, final int color) {
 		final Object w = ((CraftWorld) t.getWorld()).getHandle();
-		final Sheeep194 t_ = new Sheeep194((World) ((CraftWorld) t.getWorld()).getHandle(), (Entity) ((CraftPlayer) target).getHandle());
+		final Sheeep194 t_ = new Sheeep194((World) ((CraftWorld) t.getWorld()).getHandle(),
+				(Entity) ((CraftPlayer) target).getHandle());
 
 		Bukkit.getScheduler().runTask(m, new Runnable() {
 			public void run() {

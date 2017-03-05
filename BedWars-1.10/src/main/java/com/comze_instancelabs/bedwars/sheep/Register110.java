@@ -66,14 +66,15 @@ public class Register110 extends Register {
 
 			return true;
 		} catch (Exception ex) {
-		    MinigamesAPI.getAPI().getLogger().log(Level.WARNING, "exception", ex);
+			MinigamesAPI.getAPI().getLogger().log(Level.WARNING, "exception", ex);
 			return false;
 		}
 	}
 
 	public Sheeep110 spawnSheep(Plugin m, final Location t, Player target, final int color) {
 		final Object w = ((CraftWorld) t.getWorld()).getHandle();
-		final Sheeep110 t_ = new Sheeep110((World) ((CraftWorld) t.getWorld()).getHandle(), (Entity) ((CraftPlayer) target).getHandle());
+		final Sheeep110 t_ = new Sheeep110((World) ((CraftWorld) t.getWorld()).getHandle(),
+				(Entity) ((CraftPlayer) target).getHandle());
 
 		Bukkit.getScheduler().runTask(m, new Runnable() {
 			public void run() {

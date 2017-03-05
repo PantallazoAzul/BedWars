@@ -71,7 +71,8 @@ public class Register18 extends Register {
 
 	public Sheeep18 spawnSheep(Plugin m, final Location t, Player target, final int color) {
 		final Object w = ((CraftWorld) t.getWorld()).getHandle();
-		final Sheeep18 t_ = new Sheeep18((net.minecraft.server.v1_8_R1.World) ((CraftWorld) t.getWorld()).getHandle(), (net.minecraft.server.v1_8_R1.Entity) ((CraftPlayer) target).getHandle());
+		final Sheeep18 t_ = new Sheeep18((net.minecraft.server.v1_8_R1.World) ((CraftWorld) t.getWorld()).getHandle(),
+				(net.minecraft.server.v1_8_R1.Entity) ((CraftPlayer) target).getHandle());
 
 		Bukkit.getScheduler().runTask(m, new Runnable() {
 			public void run() {

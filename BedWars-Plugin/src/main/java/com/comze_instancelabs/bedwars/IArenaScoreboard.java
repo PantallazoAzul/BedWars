@@ -47,17 +47,24 @@ public class IArenaScoreboard extends ArenaScoreboard {
 				ascore.put(arena.getName(), Bukkit.getScoreboardManager().getNewScoreboard());
 			}
 			if (!aobjective.containsKey(arena.getName())) {
-				aobjective.put(arena.getName(), ascore.get(arena.getName()).registerNewObjective(arena.getName(), "dummy"));
+				aobjective.put(arena.getName(),
+						ascore.get(arena.getName()).registerNewObjective(arena.getName(), "dummy"));
 			}
 
 			aobjective.get(arena.getName()).setDisplaySlot(DisplaySlot.SIDEBAR);
 
-			aobjective.get(arena.getName()).setDisplayName(MinigamesAPI.getAPI().pinstances.get(plugin).getMessagesConfig().scoreboard_title.replaceAll("<arena>", arena.getName()));
+			aobjective.get(arena.getName())
+					.setDisplayName(MinigamesAPI.getAPI().pinstances.get(plugin).getMessagesConfig().scoreboard_title
+							.replaceAll("<arena>", arena.getName()));
 
-			aobjective.get(arena.getName()).getScore(Bukkit.getOfflinePlayer(ChatColor.BLUE + "BLUE")).setScore(arena.blue);
-			aobjective.get(arena.getName()).getScore(Bukkit.getOfflinePlayer(ChatColor.RED + "RED")).setScore(arena.red);
-			aobjective.get(arena.getName()).getScore(Bukkit.getOfflinePlayer(ChatColor.GREEN + "GREEN")).setScore(arena.green);
-			aobjective.get(arena.getName()).getScore(Bukkit.getOfflinePlayer(ChatColor.YELLOW + "YELLOW")).setScore(arena.yellow);
+			aobjective.get(arena.getName()).getScore(Bukkit.getOfflinePlayer(ChatColor.BLUE + "AZUL"))
+					.setScore(arena.blue);
+			aobjective.get(arena.getName()).getScore(Bukkit.getOfflinePlayer(ChatColor.RED + "ROJO"))
+					.setScore(arena.red);
+			aobjective.get(arena.getName()).getScore(Bukkit.getOfflinePlayer(ChatColor.GREEN + "VERDE"))
+					.setScore(arena.green);
+			aobjective.get(arena.getName()).getScore(Bukkit.getOfflinePlayer(ChatColor.YELLOW + "AMARILLO"))
+					.setScore(arena.yellow);
 
 			p.setScoreboard(ascore.get(arena.getName()));
 		}

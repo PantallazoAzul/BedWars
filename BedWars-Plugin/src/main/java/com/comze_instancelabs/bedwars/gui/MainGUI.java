@@ -89,7 +89,8 @@ public class MainGUI {
 				if (config.isSet("maingui.category_items")) {
 					for (String aclass : config.getConfigurationSection("maingui.category_items.").getKeys(false)) {
 						// TODO Category.java with lore and displayname
-						category_items.put(aclass, Util.parseItems(config.getString("maingui.category_items." + aclass + ".items")).get(0));
+						category_items.put(aclass, Util
+								.parseItems(config.getString("maingui.category_items." + aclass + ".items")).get(0));
 					}
 				}
 			}

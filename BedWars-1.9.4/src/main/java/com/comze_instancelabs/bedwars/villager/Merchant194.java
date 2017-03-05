@@ -59,7 +59,7 @@ public class Merchant194 implements Merchant {
 
 	@Override
 	public void openTrading(Villager villager, Player player) {
-		this.h.openTrading(villager, ((CraftPlayer)player).getHandle(), this.title);
+		this.h.openTrading(villager, ((CraftPlayer) player).getHandle(), this.title);
 	}
 
 	@Override
